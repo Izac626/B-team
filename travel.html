@@ -14,48 +14,58 @@
     <link href="https://hangeul.pstatic.net/hangeul_static/css/NanumSuJubEunDaeHagSaeng.css" rel="stylesheet">
 <body class="container">
     <article class="start">
-        <br><br><br><h1 class="mt-5 text-center"><strong>어디로 놀러가고 싶어?</strong></h1>
+        <h1 class="mt-5 text-center"><strong>어디로 놀러가고 싶어?</strong></h1>
         <h4 class="text-center">나에게 맞는 여행지는 어디일까?</h4><br>
         <br><div class="logo" style="text-align : center;">
-            <img src="배경로고.png" width="400" height="300">
+            <img src="배경로고.png" width="600" height="345">
         </div>
-        <br><br><button type="button" class="btn text-white mt-5" style="background-color: #64a9f27b;" onclick='start();' ><strong>여행 시작!</strong></button>
-        
-
-                
+        <br><br><button id="s" type="button" class="btn text-white mt-5" style="text-align: center; background-color: #64a9f27b; width:1100px;height:70px; font-size:35px;" onclick='start();'  ><strong>여행 시작!</strong></button>
         </article> 
+
         <article class="question">
             <div class="progress mt-5">
-                <div class="progress-bar" role="progressbar" style="width: calc(100/12*1%)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: calc(100/12*1%)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                </div>
             </div>
+        </article>
+
+        <article class="picto">
             <h1 id="title" class="text-center mt-5">질문</h1>
             <input id="type" type="hidden" value="EI"> 
-            <br><br><br><br><button id="A" type="button" class="btn"  style="background-color: #a4cefb7b;"><strong>Secondary</strong></button><br><br><br><br>
-            <button id="B" type="button" class="btn"  style="background-color: #a4cefb7b;">Secondary</button>
+            <br><br><br><br><button id="A" type="button" class="btn"  style="background-color: #a4cefb7b; width:1100px;height:65px;">Secondary</button><br><br><br><br>
+            <button id="B" type="button" class="btn"  style="background-color: #a4cefb7b;width:1100px;height:65px;">Secondary</button><br><br>
+            <table>
+                <td class="loca" style="text-align : center;">
+            <img src="001.png" width="200" height="150"></td>
+
+            <td class="loca" style="text-align : center;">
+            <img src="002.png" width="200" height="150"></td>
+
+            <td class="loca" style="text-align : center;">
+            <img src="003.png" width="200" height="150"></td>
+
+            <td class="loca" style="text-align : center;">
+            <img src="004.png" width="200" height="150"></td>
+
+            <td class="loca" style="text-align : center;">
+            <img src="005.png" width="200" height="150"></td>
+            </table>
         </article>
 
          <!-- 결과 페이지 -->
-    <article class = "result"> 
-        <div class="main3">
-            <img id = "img" class="text mt-5" src = "결과서울.png" width="200" height="100" alt = "recom">
-            <style>div {text-align : center;}</style>
-                <h1 id = "recom" class = "text-center mt-5">장소</h1><br>
-                <h3 id = "explain" class = "text-center">장소설명</h3>
+         <article class = "result"> 
+            <div class="main3">
+                <img id = "img" class="text mt-5" src = "결과서울.png" width="200" height="100" alt = "recom">
                 <style>div {text-align : center;}</style>
-            
-            <article>
-                <button id = "c" type="button" class="mt-5 startButton" onclick = 'end();'>모든 추천 장소가 궁금하지 않으신가요?</button>
-            </article>
-        </div>
-    </article> 
-    
-    <article>
-        <div class="main4"> <!--결과 페이지 속 결과 링크 연결 16개 이미지화시켜서 링크 달기-->
-            <style>div {text-align : center;}</style>
-            <h1 id = "explain" class="mt-5 text-center">한 번 더 클릭하면 무슨 일이 생길까요?</h1><br><br>
-            <a href="recommend.html"><img id = "img1" class="text mt-5" src = "클릭.png" width="600" height="400" alt = "hakgwa">
+                    <h1 id = "recom" class = "text-center mt-5">장소</h1><br>
+                    <h3 id = "explain" class = "text-center">장소설명</h3>
+                    <style>div {text-align : center;}</style>
+                
+                <article>
+                    <button id = "c" type="button" class="mt-5 startButton" onclick = "location.href='recommend.html'">모든 추천 장소가 궁금하지 않으신가요?</button>
+                </article>
             </div>
-    </article><br><br>
+        </article>
 
         <article class="kakao_ad mt-5">
             <ins class="kakao_ad_area" style="display:none;" 
@@ -108,8 +118,13 @@
       } 
         
         function start() {
+            document.getElementById("s").style.fontSize = "35px";
+            document.getElementById("A").style.fontSize = "35px";
+            document.getElementById("B").style.fontSize = "35px";
+            document.getElementById("c").style.fontSize = "35px";
             $(".start").hide();
             $(".question").show();
+            $(".picto").show();
             next();
         }
         $("#A").click(function(){
@@ -124,7 +139,10 @@
         function next() {
             if (num == 13) {
                 $(".question").hide();
+                $(".picto").hide();
                 $(".result").show();
+                $("kakao_ad").show();
+
                 var mbti = ""; // 빈 문자열을 쓰는 이유?
                 ($("#EI").val() < 2) ?  mbti+="I" : mbti+="E";
                 ($("#SN").val() < 2) ?  mbti+="N" : mbti+="S";
@@ -142,17 +160,6 @@
                 $("#B").html(q[num]["B"]);
                 num++; 
             }
-        }
-
-        // end() 함수가 호출되면, ".result"(결과 페이지)가 사라지고 ".main4"가 나타남
-        var count ;
-        function end(){
-
-            $(".result").hide();
-            $(".main4").show();
-            $(".kakao_ad").hide();
-            //  매칭 결과 이동
-           
         }
     </script>
     <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61ff8857ff481db8"></script>

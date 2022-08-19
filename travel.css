@@ -1,7 +1,6 @@
-
 * {
-	font-family: 'NanumSuJubEunDaeHagSaeng';
-}
+    font-family: 'NanumSuJubEunDaeHagSaeng';
+ }
 
 body {
     background-image: url('배경.png');
@@ -26,6 +25,10 @@ article {
 .question {
     display: none;
 } 
+
+.picto {
+    display: none;
+}
 
 .result {
     display: none;
